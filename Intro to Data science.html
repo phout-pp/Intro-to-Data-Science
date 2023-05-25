@@ -1,0 +1,708 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Intro to Data science</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="006bd3a5-10a9-45fd-b2fd-ecf0c7392fb3" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 48.22%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="https://www.sudeep.co/images/post_images/2018-02-09-Understanding-the-Data-Science-Lifecycle/chart.png"/></div><h1 class="page-title">Intro to Data science</h1></header><div class="page-body"><p id="e53a14f5-4028-4508-a8c2-81269264ea16" class="">Free class: Trailhead  <a href="https://trailhead.salesforce.com/">https://trailhead.salesforce.com/</a> </p><h1 id="b281dbef-2f39-4a14-9aee-8ee84408712e" class="">Big data </h1><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="eaee8a21-07cd-455a-b13c-c0f67aa8b704"><div style="font-size:1.5em"><span class="icon">🗣</span></div><div style="width:100%"><strong>The next frontier for innovation, competition, and productivity</strong> -<a href="https://www.mckinsey.com/our-people/james-manyika">James Manyika</a> 2011</div></figure><p id="cfcfdbb6-a47b-411e-8660-3b9ae29b9231" class="">Volume = ຂະໜາດໃຫຍ່ເກີນກວ່າທີ່ຈະເຮັດວຽກໃນ PC ໜ່ວຍດຽວ</p><p id="971c8891-a7fe-4020-8d56-1cb8c8c86c52" class="">Velocity = ຄວາມໄວໃນການ generate Data  </p><p id="6f5a5054-acc0-4ca5-8368-5509dbd77d58" class="">Variety = ມີຄວາມຫຼາກຫຼາຍ (Video, Audio, Text)</p><p id="ddead10e-bbb2-485d-b0f8-d306968fd82f" class="">Value = ແປງ Bigdata ໃຫ້ເກີດມູນຄ່າ</p><h2 id="56d9c8c1-0731-4068-9ab0-4cc6c51ff301" class="">Mailchimp</h2><div id="da5064e8-3b8c-4cee-acd2-631620abd58d" class="column-list"><div id="aa8bade5-915d-414f-b431-1642e63e7b3a" style="width:50%" class="column"><figure id="6d9bee14-f3a8-4800-96d8-6899a7bb51a3"><a href="https://mailchimp.com/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Marketing smarts for big ideas | Mailchimp</div><div class="bookmark-description">Mailchimp helps small businesses do big things, with the right tools and guidance every step of the way.</div></div><div class="bookmark-href"><img src="https://mailchimp.com/release/plums/cxp/images/favicon.8969a0a6.1.ico" class="icon bookmark-icon"/>https://mailchimp.com/</div></div><img src="https://eep.io/images/yzco4xsimv0y/24H6wd91AK6dsK0oZqflB6/002bed565a1a474d01ac6469bcc89cbb/D3_General.png" class="bookmark-image"/></a></figure><p id="b4c708b0-4041-47ce-8ceb-9278ee711dc3" class="">ເປັນເວັບບໍລິການການສົ່ງເມວສາມາດສົ່ງໂຄສະນາຜ່ານເມວໄດ້ ແລະຍັງສາມາດເກັບ ຂໍ້ມູນໄດ້ຫຼາຍຈົນກາຍເປັນ Bigdata </p><p id="514657ef-788c-4695-9388-6a3a6ab99f06" class="">
+</p></div><div id="135e311c-c13f-447a-9f56-00caf9f0bb59" style="width:50%" class="column"><figure id="ae1df697-0853-46af-af1a-81b6f1591db0" class="image" style="text-align:left"><a href="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-13_212151.png"><img style="width:240px" src="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-13_212151.png"/></a></figure><p id="3b1f73f7-93eb-4db1-bde5-cedde6f1e5a8" class="">ສາມາດເຮັດເປັນ condition ໃນການສົ່ງເມວໄດ້ ເພື່ອເກັບຂໍ້ມູນຈາກຜູ້ທີ່ເປີດອ່ານເມວ</p></div></div><h2 id="5682940c-2f27-4899-a49b-acfda88e309f" class="">Google trends</h2><div id="ab0a87fb-1e35-44c0-886d-b88c882c6852" class="column-list"><div id="bfb10f64-925c-4290-ad94-3e0c48d8c52d" style="width:50%" class="column"><figure id="41016097-f719-42b3-b629-d251893f56eb"><a href="https://trends.google.com/trends/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Google Trends</div></div><div class="bookmark-href"><img src="https://ssl.gstatic.com/trends/favicon.ico" class="icon bookmark-icon"/>https://trends.google.com/trends/</div></div></a></figure><figure id="dc14a7b1-ffa3-460d-b27d-a35d0881f9f0"><a href="https://ads.google.com/home/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Google Ads - Get Customers and Sell More with Online Advertising</div><div class="bookmark-description">Discover how online advertising with Google Ads can help grow your business. Get customers and sell more with our digital advertising platform.</div></div><div class="bookmark-href"><img src="https://www.google.com/images/branding/product/1x/ads_24dp.png" class="icon bookmark-icon"/>https://ads.google.com/home/</div></div><img src="https://lh3.googleusercontent.com/nupo3HWMIUeuul9r2IBSfpBo568bL-STG9nA71dUuW97DnhAXFgm2WWjczhTFqRHQZRf5VA-_PmxIZaIAXhOUrzfr5unPjFuW9za=w1200" class="bookmark-image"/></a></figure></div><div id="a2ff31ae-f0e7-452b-a0ac-d601172015a3" style="width:50%" class="column"><p id="cca9d7b2-ae95-4ed1-ba3d-3c50b316b297" class="">
+</p><p id="a8e5f121-3e0b-43fe-9f1e-a31c3a56aec5" class="">ໃຊ້ເພື່ອເບິ່ງ Trends ປັດຈຸບັນທີ່ເຊີດໃນ Google</p><p id="2f234ba5-66d8-4d8f-8e89-f95b0feec701" class="">
+</p><p id="9f3a1087-1791-43ab-840f-3586c972b774" class="">
+</p><p id="8d579a96-dda5-452b-8b25-ec588f41134d" class="">ໃຊ້ເພື່ອເບິ່ງຈຳນວນ Key word ຄ້າວໆຈາກ Google</p><p id="846d2606-b023-4c6d-ad1b-286de5fc6548" class="">
+</p></div></div><h1 id="6282bc0c-d189-4cc2-8f3b-d4b2e2782477" class="">4 phase of Data Analytic</h1><div id="1a6c7ae5-db04-44af-96a4-4b60999ac388" class="column-list"><div id="fd384246-9fd1-43e5-abf8-5696acc7e302" style="width:62.5%" class="column"><figure id="0966e56a-eb47-4dc5-a371-59515829dd3f" class="image"><a href="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-13_221239.png"><img style="width:1245px" src="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-13_221239.png"/></a></figure><p id="ff87a710-aedf-4f66-b68a-28e9188c38cf" class=""><strong>Data Engineer</strong> ເປັນຄົນວາງໂຄງສ້າງຂອງ Data ໃຫ້ອົງກອນ ເປັນປະການທຳອິດກ່ອນເຂົ້າສູ້ການວິເຄາະ Data</p><p id="86a23ccd-0965-4948-9d27-9d656f46ec3b" class="">
+</p></div><div id="5ec5328e-e20f-43ba-a52f-ea7967aaafca" style="width:37.49999999999999%" class="column"><ol type="1" id="cd7412c7-4d35-4765-9edc-5dab474d7293" class="numbered-list" start="1"><li><strong>Descriptive Analytics</strong>
+<mark class="highlight-red"><strong>What happened?</strong></mark> ເປັນການຕັ້ງຄຳຖາມເພື່ອຕອບໂຈດທຸລະກິດ Backward looking ເພື່ອຫາວ່າມື້ວານ ເດືອນແລ້ວເກີດຫຍັງຂຶ້ນ.</li></ol><ol type="1" id="1aea2203-25e4-40bf-90bf-d8bdbfd6c00c" class="numbered-list" start="2"><li><strong>Diagnostic Analytics
+</strong><mark class="highlight-red"><mark class="highlight-red"><mark class="highlight-red"><mark class="highlight-red"><mark class="highlight-red"><mark class="highlight-red"><mark class="highlight-red"><mark class="highlight-red"><mark class="highlight-red"><mark class="highlight-red"><strong>Why it happened? </strong></mark></mark></mark></mark></mark></mark></mark></mark></mark></mark>ຄ້າຍຄືການກວດອາການຂອງໝໍ ເພື່ອວິເຄາະວ່າປັດໃຈ ສາເຫດເກີດມາແຕ່ໃສ ມາໄດ້ຈັງໃດ ເພື່ອຊອກຫາຕົ້ນຕໍຂອງສາເຫດ.</li></ol><ol type="1" id="f027f33f-041f-4b07-9bad-8fda44bb3ff8" class="numbered-list" start="3"><li><strong>Predictive Analytics
+</strong><mark class="highlight-red"><strong>What will happen? </strong></mark>ເປັນການທຳນາຍກ່ຽວກັບອານາຄົດ Forward looking ເພື່ອຫາວ່າມື້ຕໍ່ໄປຈະເກີດຫຍັງຂຶ້ນເພື່ອຈະເຂົ້າເຖິງຄວາມຄິດຂອງລູກຄ້າ.</li></ol><ol type="1" id="8453db40-860d-45df-96c0-cc858d5914ec" class="numbered-list" start="4"><li><strong>Prescriptive Analytics
+</strong><mark class="highlight-red"><strong>What should we do about it? </strong></mark>ເພື່ອຮັບມືກັບສິ່ງທີ່ເກີດຂຶ້ນໃນອານາຄົດ ເພື່ອຕອບຮັບກັບຄວາມຕ້ອງການຂອງລູກຄ້າຖ້າຫາກລູກຄ້າຈະຍົກເລີກໃຊ້ບໍລິການຂອງເຮົາ ເຮົາຈະມີການແກ້ໄຂແນວວໃດ.</li></ol><p id="c5ba06cf-7418-4888-ad4c-97dc4d375457" class=""><mark class="highlight-red">*</mark><strong>Churn prediction</strong>
+predicting which customers are at high risk of leaving your company or canceling a subscription to a service, based on their behavior with your product.</p></div></div><figure id="c687797c-ca2c-4eda-a993-7e5f0342ce7a" class="image"><a href="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-13_221732.png"><img style="width:576px" src="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-13_221732.png"/></a><figcaption>Data Science bootcamp position</figcaption></figure><h1 id="26e14c44-c014-4e71-8edc-6f776c83e287" class="">Case Study</h1><h2 id="b743458c-6f11-4dc5-99e7-c03a873573f4" class="">01 - Target</h2><div id="a2f5ad67-a4e5-4298-b4ab-7cc20b3851ed" class="column-list"><div id="b88402bc-2bac-44db-a4c2-64a1fe39c1cf" style="width:50%" class="column"><figure id="e9ae594b-6792-4a5b-b223-175e8bb521ae" class="image"><a href="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-13_232424.png"><img style="width:1064px" src="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-13_232424.png"/></a></figure></div><div id="5f29133b-aeb8-455b-b0ad-84be3443b252" style="width:50%" class="column"><p id="be2aa607-5e20-465a-9759-27875e67ec34" class="">
+</p><p id="983051a4-914a-4ef0-a4dd-6b5b32bf51d6" class="">Target ເປັນບໍລິສັດ retail ຂາຍເຄື່ອງເຊິ່ງສາມາດເກັບຂໍ້ມູນຈົນສາມາດກວດສອບໄດ້ວ່າໃຜທ້ອງ ຈາກການເກັບພຶດຕິກຳການຊື້ເຄື່ອງຂອງຜູ້ຍິງ ເຮັດໃຫ້ສາມາດຈັດໂປຣໂມຊັ້ນໄດ້ຖືກຕາມເປົ້າໝາຍ</p><figure id="10af33ac-4a0f-405d-9ee3-c3da3823d695"><a href="https://www.forbes.com/sites/kashmirhill/2012/02/16/how-target-figured-out-a-teen-girl-was-pregnant-before-her-father-did/#4e35ca8c6668" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">How Target Figured Out A Teen Girl Was Pregnant Before Her Father Did</div><div class="bookmark-description">Target has perfected the technique of analyzing consumers&#x27; shopping habits to figure out who&#x27;s pregnant. How can they send customers congratulatory coupons without freaking them out?</div></div><div class="bookmark-href"><img src="https://i.forbesimg.com/48X48-F.png" class="icon bookmark-icon"/>https://www.forbes.com/sites/kashmirhill/2012/02/16/how-target-figured-out-a-teen-girl-was-pregnant-before-her-father-did/#4e35ca8c6668</div></div><img src="https://imageio.forbes.com/blogs-images/thumbnails/blog_1016/pt_1016_12626_o.jpg?format=jpg&amp;width=1200" class="bookmark-image"/></a></figure></div></div><h2 id="4af2c53c-0f96-4c91-a809-cb8a69263f72" class="">02 - Tesco</h2><div id="9a39b1a4-b2ba-4d86-b531-81dbcdb055ee" class="column-list"><div id="476e3c3a-13ac-4850-a471-cd1bc96ca064" style="width:50%" class="column"><figure id="4abbe00f-8a29-4bfd-adde-8470d4e1c3a3" class="image"><a href="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-14_160307.png"><img style="width:1208px" src="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-14_160307.png"/></a></figure></div><div id="0759f356-9c86-4a3e-82b4-8b6560cf9709" style="width:50%" class="column"><p id="b5566ede-ec69-441f-9ed4-02911ca3d2b6" class="">ເປັນຫ້າງ retail ທີ່ຈ້າງບໍລິສັດ Dunnhumby ເພື່ອມາຈັດການກັບ Data ໄດ້ສ້າງ ບັດ Tesco ເພື່ອສ້າງ Loyalty spender ໂດຍການເກັບພຽງຂໍ້ມູນ ຂຳນວນໃນການຈ່າຍເງິນພຽງຢ່າງດຽວ. ລູກຄ້າແຕ່ລະຄົນຈະໄດ້ຮັບຄູປອງຄາມການຈ່າຍເງິນຂອງລູດຄ້າ. </p><figure id="a92e208c-8d57-4c21-882c-e4666478c2ad" class="image"><a href="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-14_161045.png"><img style="width:384px" src="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-14_161045.png"/></a></figure></div></div><h2 id="8ce45933-6207-4870-b874-4f6d7929aa40" class="">Resell analysis example.</h2><div id="ea7b47e2-843e-4456-823f-87670fa58006" class="column-list"><div id="2c488c19-c571-4c64-8add-33f5c12c0381" style="width:37.5%" class="column"><figure id="7ea0a7fd-491c-451b-9bfc-e8e791f6d510" class="image"><a href="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-14_162137.png"><img style="width:288px" src="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-14_162137.png"/></a></figure></div><div id="4087a7c7-6b1d-4f10-a538-04bd4a17f932" style="width:62.5%" class="column"><p id="23cb272b-7a40-4414-a0a6-73a894eb7be6" class=""><strong>ມີ 5 transection</strong></p><ol type="1" id="4ae9aca3-775f-472a-a192-f1032de30129" class="numbered-list" start="1"><li><mark class="highlight-red">Item ທີ່ຂາຍດີທີ່ສຸດ</mark>
+ຂະຫນົມປັງ 4/5 = 80%
+ນົມ 4/5 = 80%</li></ol><ol type="1" id="9286c2d5-e58a-41a3-af0b-1b2214a7096a" class="numbered-list" start="2"><li><mark class="highlight-red">Item set ທີ່ຂາຍດີທີ່ສຸດ</mark>
+ຂະໜົມປັງ, ນົມ 3/5 = 60%
+ຂະໝົມປັງ, ໄຂ່ດາວ 3/5 = 60%</li></ol><ol type="1" id="9daba14d-baec-4874-b8dd-33061c54af4c" class="numbered-list" start="3"><li><mark class="highlight-red">ຖ້າຫາກລູກຄ້າຊື້ຂະໜົມປັງ ເຂົາຈະຊື້ຫຍັງຕໍ່</mark>
+If (bread) Then (milk)</li></ol><p id="55e702dd-5595-4831-82ac-67e0cd12c4c1" class="">
+</p></div></div><h2 id="8924ca0a-6443-4fa5-b320-44d4aaf16fae" class="">03 - Netflix</h2><div id="b5c2a34d-3353-4955-bb6b-7d330d063eff" class="column-list"><div id="27724518-d204-49a4-b7aa-4e7d98d39b20" style="width:50%" class="column"><figure id="03c4d889-1737-4d51-9217-f487e7a2c735" class="image"><a href="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-14_171727.png"><img style="width:1121px" src="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-14_171727.png"/></a></figure></div><div id="46d3a2b6-e531-435f-b439-58bedfcdb55b" style="width:50%" class="column"><p id="5760edd3-f092-4f9f-bfd0-62692f951db7" class="">
+</p><p id="3a548711-75ad-4871-a355-b889b756a5b2" class="">Netflix ຈັດງານແຂ່ງເພື່ອທີ່ຫາຄົນທີ່ເຮັດ Model ການ recommend ວ່າໃຜເຮັດດີກວ່າເນັດຟິກ ແຕ່ເກີດການປ່ຽນຜ່ານເປັນ Streaming service ເຮັດໃຫ້ໂມເດວນີ້ບໍ່ໄດ້ໃຊ້ງານ.</p><figure id="d0ef3fe7-9da8-478a-94fc-ace970a40ec3"><a href="https://www.forbes.com/sites/ryanholiday/2012/04/16/what-the-failed-1m-netflix-prize-tells-us-about-business-advice/?sh=483707b973c9" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">What the Failed $1M Netflix Prize Says About Business Advice</div><div class="bookmark-description">&amp;nbsp; Netflix (Photo credit: Wikipedia) If you&#x27;ve picked up a business book in the last four years, you undoubtedly heard it: the endless championing of Netflix&#x27;s $1 Million Prize. It made for great &quot;the future of business&quot; fodder. A technology company crowdsources its R&amp;amp;D by ponying up $1,000,000 to anyone who can improve [...]</div></div><div class="bookmark-href"><img src="https://i.forbesimg.com/48X48-F.png" class="icon bookmark-icon"/>https://www.forbes.com/sites/ryanholiday/2012/04/16/what-the-failed-1m-netflix-prize-tells-us-about-business-advice/?sh=483707b973c9</div></div><img src="https://imageio.forbes.com/blogs-images/thumbnails/blog_2100/pt_2100_88_o.jpg?format=jpg&amp;width=1200" class="bookmark-image"/></a></figure></div></div><h1 id="6e9c17b2-b4d4-4c1a-bd75-37c1c3aad61b" class="">Data Analysis workflow</h1><div id="7fa08057-0cd7-4693-b961-6012f15a526d" class="column-list"><div id="933dc74c-4010-4c2d-9131-1d0aa1a3f331" style="width:50%" class="column"><figure id="78961a04-259a-45a4-a2f4-090348ff276d" class="image"><a href="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-14_172418.png"><img style="width:1246px" src="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-14_172418.png"/></a></figure><blockquote id="8768e711-41b6-48c4-b103-4a712d9e22ee" class="">ການເກັບຂໍ້ມູນຂອງ CSV ຈະເປັນ Structure data</blockquote><p id="ad0a42e7-f014-4ed7-a422-959c65a00264" class="">
+</p><figure id="90b24589-6251-4b76-bbf4-8cfae4e3cf2b" class="image"><a href="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-14_173134.png"><img style="width:1234px" src="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-14_173134.png"/></a></figure></div><div id="d379620c-d7cb-4665-935d-f49d66a800d2" style="width:50%" class="column"><p id="9b4db17e-ed88-428b-971c-3fb9dc46340d" class="">ເປັນການເຮັດວຽກແບບດັງເດີ່ມເຊິ່ງຈະມີການເພີ່ມເຕີມມາໂດຍມີການເຮັດ Dashboard</p><figure id="305d6025-ab23-4724-a072-f2e6a5c86b50" class="image"><a href="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-14_172605.png"><img style="width:1285px" src="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-14_172605.png"/></a></figure><figure id="a090bd54-73ac-4895-a8dd-9ca73b5b4735" class="image"><a href="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-14_173146.png"><img style="width:1293px" src="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-14_173146.png"/></a></figure></div></div><h1 id="4dbdde06-f212-415c-9d7b-d1b92c30d49a" class="">Data types</h1><div id="44abe732-e177-4b5b-b5f1-92ccf873c304" class="column-list"><div id="bf1b6e53-f0e7-4534-a43a-aef226ac1b4a" style="width:50%" class="column"><figure id="e47c271e-7a9b-4e6c-b87f-774f975c749f" class="image"><a href="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-14_173645.png"><img style="width:1183px" src="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-14_173645.png"/></a></figure><p id="09e1ff85-b76e-4831-9933-02cf5c1ca4ce" class="">
+</p></div><div id="547d38e6-df37-41b1-b127-9fd473a8c4af" style="width:49.99999999999999%" class="column"><p id="fab57b80-b9ae-4349-9c78-ab5457395bad" class=""><strong>Data types guide our approach.</strong></p><figure id="facf5186-2073-4337-94c9-31de735ca2c6" class="image"><a href="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-14_173820.png"><img style="width:288px" src="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-14_173820.png"/></a></figure><figure id="17b8b1e0-dbf6-486c-a5df-42052e0b4373" class="image"><a href="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-14_173840.png"><img style="width:336px" src="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-14_173840.png"/></a></figure></div></div><p id="82b1d12f-b9b3-4d4a-80ce-495a6e0493ea" class="">
+</p><h1 id="eab4098d-10f6-4415-a542-8c573d07fa00" class="">CRISP-DM</h1><div id="6def0f1b-d98e-45d3-a2c6-5db35e8166dc" class="column-list"><div id="2aded709-5c3c-4792-b4bf-1698399a53cc" style="width:50%" class="column"><figure id="a1e8c832-ccc5-4882-8db4-db1b6899eeb4" class="image"><a href="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-15_225856.png"><img style="width:1240px" src="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-15_225856.png"/></a></figure></div><div id="752c1cdb-0d9e-45fa-9fd6-836ecc35bbce" style="width:50%" class="column"><p id="87101cfe-7b71-46e0-90c2-8d3182c2e418" class="">Data ເປັນສູນກາງຂອງ framework </p><blockquote id="5c08c861-1ae2-4de8-bc73-5ecc4b4e5e66" class=""><strong>Data mining</strong> ຄືການຫາແພດເທີ້ນໃນ data ຄືການຫາວ່າຫຼັງຈາກຊື້ນົມແລ້ວລູກຄ້າຊື້ຫຍັງຕໍ່</blockquote><p id="d6ba4c94-571c-4c65-a642-85ea6412ac6f" class="">
+</p><p id="1c6ec8c4-0e1e-43cd-9aff-a9bc525ccd0a" class=""><strong><mark class="highlight-red">80%</mark></strong> <mark class="highlight-red_background">ເຮົາຈະໃຊ້ເວລາໃນການເຮັດ data collection, cleaning ແລະ organizing data</mark> ສາມຂັ້ນຕອນຫຼັກນນີ້ຈະໃຊ້ເວລາຫຼາຍເນື່ອງຈາກຕ້ອງລົມກັນໃຫ້ເຂົ້າໃຈວ່າ Business user ຕ້ອງການຫຍັງ. </p><p id="8421236e-12d1-4e15-8ff4-f18e0f78f906" class="">
+</p></div></div><h1 id="ade60dd9-fbfa-4089-9e37-716837aefe21" class="">Data analytics</h1><div id="46ec23fc-a12b-4206-a509-60cd44241dfc" class="column-list"><div id="84a4bc5f-b182-4285-963e-12da4dfb5585" style="width:50%" class="column"><p id="fe72e5f4-9509-4b18-a6c1-dcfbf8c52391" class="">
+</p><p id="6953007a-bbeb-4d25-b943-df20909a6901" class="">
+</p><ul id="b4e1c8ae-886b-4f8e-9bf2-9e27c0c95a15" class="bulleted-list"><li style="list-style-type:disc"><strong>Dimension:</strong> category ຄໍລ້ຳທີ່ເປັນປະເພດສິນຄ້າ ຂໍ້ມູນເປັນຕົວໜັງສື</li></ul><ul id="e538f6ad-a4b0-48ba-91c0-39c6027f5fa2" class="bulleted-list"><li style="list-style-type:disc"><strong>Measures:</strong> number ຄໍລ້ຳທີ່ເປັນໂຕເລກທີ່ສາມາດບວກລົບຄູນຫານໄດ້ແບບມີຄວາມໝາຍ</li></ul><p id="1e11969d-882f-4d49-8bf9-8073e27f1a06" class="">
+</p><hr id="cca2088c-bdbd-46bb-90af-ecd4f3df1eb3"/><figure id="800a033c-ee6e-4806-b249-db7575953f43" class="image"><a href="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-15_231439.png"><img style="width:1236px" src="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-15_231439.png"/></a></figure><blockquote id="5344e311-9c92-4fff-98fb-579d5b7c5235" class=""><mark class="highlight-red_background">ເຮົາສາມາດເອົາ Data ມາໝຸນກັບ Dimension ເພື່ອຊອຍຫຍ່ອຍຂໍ້ມູນ</mark></blockquote><figure id="03a00e46-59f2-41c8-84ea-02bddc84821d" class="image"><a href="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-15_231640.png"><img style="width:1217px" src="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-15_231640.png"/></a></figure></div><div id="c12d2820-f612-4825-a2af-98cf7b9977d2" style="width:49.99999999999999%" class="column"><figure id="99c38da8-6c4b-4081-ad35-9b6a308f3555" class="image"><a href="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-15_230631.png"><img style="width:1392px" src="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-15_230631.png"/></a></figure><hr id="8148af39-aac7-41a4-9105-5d1166e840f7"/><p id="524080ab-06d1-4bb7-8461-02bc673bd779" class="">ເມື່ອໝຸນ Data ແລ້ວເຮົາສາມາດເອົາມາເຮັກ Report ດ້ວຍ Pivot table</p><figure id="7f7c12b4-ab7a-4ab4-ad08-ea9e41ddc36a" class="image"><a href="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-15_231926.png"><img style="width:1255px" src="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-15_231926.png"/></a></figure><p id="23298eb7-a95f-4f27-8799-b76bb266a3c5" class="">
+</p></div></div><h2 id="09fee345-c829-4caf-951f-c1b5aa05d395" class="">Dashboard</h2><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="6a8a7f1a-e404-4de2-9869-170c8322729a"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>A dashboard is a visual display of all of your data. Its primary intention is to provide information at-a-glance, such as KPIs.</strong> 
+ເຮົາຈະບໍ່ເອົາ data ທຸກຢ່າງມາຍັດໃສ່ Dashboard ແຕ່ຈະເອົາ data ທີ່ກ່ຽວຂ້ອງກັບທຸລະກິດຂອງເຮົາເຊິ່ງຈະເປັນ Metric ຄື KPIs.</div></figure><figure id="5ea73c3b-57da-4c96-aa51-4a6ae42f148a"><a href="https://www.adjust.com/glossary/dashboard/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">What is a dashboard? Definitions and uses | Adjust</div><div class="bookmark-description">Learn about what a dashboard is and why it’s important to businesses and, particularly to app marketers. Plus, see examples of Adjust’s dashboards.</div></div><div class="bookmark-href"><img src="https://www.adjust.com/favicon.ico" class="icon bookmark-icon"/>https://www.adjust.com/glossary/dashboard/</div></div><img src="https://a.storyblok.com/f/47007/2501x1314/884dd286a6/meta-adjuststandard.png/m/1200x630" class="bookmark-image"/></a></figure><h2 id="38aea9a5-745f-4c37-9bfa-ad9f0863540a" class="">KPI</h2><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="76dd5e72-4a60-44cd-8e75-4d994ac701f4"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>Key Performance Indicators, a quantifiable measure of performance over time for a specific objective
+</strong>ຫຼາຍບໍລິສັດຈະມັກເບິ່ງ revenue </div></figure><figure id="0043a54e-f6f0-4896-b6aa-0deaffc83834"><a href="https://www.qlik.com/us/kpi" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">What is a Key Performance Indicator (KPI)? Guide &amp; Examples</div><div class="bookmark-description">kpi If you publish now, the selected version will not be visible on the Web site because it is not in the final workflow step. No other version will be published. Item ID:	 {B388A0DD-F359-4DA1-ADC7-F8D22BAAE582} Item name:	kpi Item path:	 /sitecore/content/Qlik/home/reporting-analytics/kpi Template:	/sitecore/templates/QLIK Client/Base/BasePage -  {997EC0A1-EB4D-4915-8E5F-332270B52291} Created from:	[unknown] Item owner:	 sitecore\nkessler 	 Page Title: What is a Key Performance Indicator (KPI)? Guide &amp; Examples 	 Page Description: KPI stands for key performance indicator, which means a quantifiable measure of performance over time for a specific objective.  Get examples &amp; choose KPIs. 	 OpenGraph Title: What is a Key Performance Indicator (KPI)? Guide &amp; Examples 	 OpenGraph Description: Get the top KPIs for each department: Sales, Marketing, Operations, &amp; more. KPI examples, templates and practical advice to help you define the right KPIs. 	 OpenGraph Image [standard value]: BrowsePropertiesOpen media libraryEdit imageClearRefresh /Images/global/og-meta-images/og-default-slate  Dimensions: 1200 x 630 Default Alternate Text: &quot;Qlik - Data Analytics for Modern Business Intelligence&quot; 	 OpenGraph Site Name [standard value]: Qlik 	 NoIndex 	 NoFollow 	 NotInSitemap 	 NotInSearch 	 Header Scripts: Select allDeselect all All		Selected	 Common combinedPictureFillVidyardjquery	 		   	 Footer Scripts: Select allDeselect all All		Selected	 Common combinedPictureFillVidyardjquery	 		   	 Source [standard value]: 	 __Source Item [standard value]: 	 Enable Item Fallback - Display item from fallback language if no language version exists 	 Enforce Version Presence - Hide this item if no language version exists 	 Standard values:  	 Tracking: ProfilesGoalsAttributes   	 Context menu:  	 Display name - Is shown in the content editor: 	 Editor: 	 Editors: Edit 	 Hidden 	 Icon: Open iconClear 	 Read only 	 Ribbon:  	 Skin: 	 Sortorder: 219 	 Style: 	 Subitems sorting:  	 Thumbnail: Take screenshotBrowseOpen Media libraryEdit imageClearRefresh  This media item has no details. 	 Originator:  	 Preview: 	 Help link: Insert linkInsert media linkInsert external linkInsert anchorInsert emailInsert JavaScriptFollowClear 	 Long description:  	 Short description: 	 Boost value: 	 Boosting rules: Edit 	 Facets: All Facets Author Author Template Bucket Creation Date &amp; Author Date Range File Size File Type Image Dimensions In Workflow Language Language Template Location Tags Template Template Author Updated Date  Selected  	 Insert rules: Edit 	 Insert options: Edit 	 Bucket parent reference - Reserved for system use. Do not set manually:  	 Is Bucket - Reserved for system use. Do not set manually 	 Bucketable - Can be stored as an unstructured item in an item bucket 	 Lock child relationship - Maintains the hierarchical relationship between this item and its children when this item is stored in an item bucket 	 Default bucket query: Build queryPaste queryClear 	 Persistent bucket filter: Build queryPaste queryClear 	 Enabled views: Select allDeselect all All		Selected	 Image ViewLock ViewMedia ViewPreview ViewTable ViewTag View	 		   	 Default view - This value must be selected in the Enabled Views field:  	 Quick actions: Select allDeselect all All		Selected	 Add ItemAdd New TemplateAdd VersionAdd to FavoritesArchiveConfigure Standard ValuesDelete ChildrenDownloadLoad ItemLock for EditingOpenPage EditorPersonalizePlayPreviewPublishRenameReset FieldsUnlock from Editing	 		   	 Renderings - Defines the shared presentation details:  Default	 Page Layout  Controls Placeholders Secondary Nav Full Width Base HeaderFrame RichText Text and Large Media Leadin Leadin Divider Leadin Promo Media Leadin Divider Leadin Promo Media Leadin Divider Leadin Promo Media Leadin Divider Leadin Promo Media Leadin Divider Leadin Promo Media Leadin Divider Leadin Promo Media Leadin Divider Leadin Promo Media Leadin Divider Leadin Promo Media Leadin Divider Leadin Promo Media Leadin Divider Leadin Promo Media Leadin RichText PreFooter FooterFrame [No placeholder settings were specified]  Print	 [No layout specified]  Controls Placeholders [No renderings specified.] [No placeholder settings were specified]  Feed	 [No layout specified]  Controls Placeholders [No renderings specified.] [No placeholder settings were specified] 	 Final renderings - Displays the combined presentation details for this specific version (shared + versioned details):  Default	 Page Layout  Controls Placeholders Secondary Nav Full Width Base HeaderFrame RichText Text and Large Media Leadin Leadin Divider Leadin Promo Media Leadin Divider Leadin Promo Media Leadin Divider Leadin Promo Media Leadin Divider Leadin Promo Media Leadin Divider Leadin Promo Media Leadin Divider Leadin Promo Media Leadin Divider Leadin Promo Media Leadin Divider Leadin Promo Media Leadin Divider Leadin Promo Media Leadin Divider Leadin Promo Media Leadin RichText PreFooter FooterFrame [No placeholder settings were specified]  Print	 [No layout specified]  Controls Placeholders [No renderings specified.] [No placeholder settings were specified]  Feed	 [No layout specified]  Controls Placeholders [No renderings specified.] [No placeholder settings were specified] 	 Renderers:  	 Controller: 	 Controller action: 	 Presets: All Presets Sample Layout  Selected  	 Page level test set: Insert linkClear 	 Content Test:  	 Valid from: NowClear 11/24/2020   6:14 PM  	 Valid to: NowClear    	 Hide version 	 Publish: NowClear    	 Unpublish: NowClear    	 Publishing targets: Select allDeselect allInvert selection  Preview Production  	 Never publish 	 Owner: sitecore\nkessler 	 Security: Assign security   	 Created: NowClear 11/24/2020   6:14 PM  	 Created by: sitecore\nkessler 	 Revision: c95393a0-9833-46ab-922e-7c386c79c98f 	 Updated: NowClear 12/9/2020   5:40 PM  	 Updated by: sitecore\twise 	 Semantics: Select allDeselect all All		Selected	 Type here to search PrevNextRefreshGo to itemPage number: 	  		    	 Archive date: NowClear    	 Archive version date: NowClear    	 Reminder date: NowClear    	 Reminder recipients - Separate multiple email addresses with ;: 	 Reminder text:  	 Quick action bar validation rules - Runs in the bar to the left of the content tree: Edit 	 Validation button validation rules - Runs when clicking the Validation ribbon button: Edit 	 Validation bar validation rules - Runs in the bar to the right of the content editor: Edit 	 Workflow validation rules - Runs in the Validation workflow action: Edit 	 Suppressed validation rules:  	 Workflow: Workflows/Qlik CT3 Translation Workflow  	 State: Workflows/Qlik CT3 Translation Workflow/Editing  	 Lock: &lt;r owner=&quot;sitecore\twise&quot; date=&quot;20201209T173935Z&quot; /&gt;  	 Default workflow [standard value]: Workflows/Qlik CT3 Translation Workflow  Validation completed: No errors or warnings.</div></div><div class="bookmark-href"><img src="https://www.qlik.com/assets/site/media/fav/apple-touch-icon.png?v=0.0.17" class="icon bookmark-icon"/>https://www.qlik.com/us/kpi</div></div><img src="https://www.qlik.com/us/-/media/images/global/og-meta-images/og-default-slate.jpg?rev=113c9f5a43da4ff2ab1fb4cd9086bf85" class="bookmark-image"/></a></figure><h1 id="b9b9aeaf-d5f8-4a3c-b55c-c839424a139a" class="">Digital Marketing KPI</h1><div id="9b8a9993-9157-40c6-9605-58ae9ef50a6b" class="column-list"><div id="7768059e-2347-40ef-99be-15934f4c1789" style="width:50%" class="column"><figure id="20179711-5b53-47a1-80d0-cc60cbbd0808" class="image"><a href="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-18_215139.png"><img style="width:720px" src="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-18_215139.png"/></a><figcaption>Facebook Metrix</figcaption></figure></div><div id="9399499d-33aa-4b58-b11a-852fcb50900b" style="width:50%" class="column"><p id="3609ff3e-5c58-4f19-809d-65b35169cef7" class=""><mark class="highlight-red"><strong>Awareness &amp; Engagement</strong></mark><strong> </strong>ມີຄົນຮູ້ຈັກທຸລະກິດເຮົາຫຼາຍຊ່ຳໃດແມ່ນເບິ່ງຈາກ ການເຂົ້າເຖິງ ແລະຄວາມຖີ່</p><p id="22c94c5c-86d5-46e8-97b4-c02c28445c0b" class=""><mark class="highlight-red"><strong>Consideration</strong></mark> ເບິ່ງຈາກການມີສ່ວນຮ່ວມຂອງລູກຄ້າວ່າເຂົ້າມາເບິ່ງເຮົາ ກົດໄລ້, ກົດແຊ, ຄອມເມັ້ນ, ຍອດວິວວິດີໂອ</p><p id="56793f14-4dbe-41e7-b204-824314b0a905" class=""><mark class="highlight-red"><strong>Conversion</strong></mark> ມີການກົດຊື້ ກົດ Add to card.</p><p id="f511359e-0a47-40e9-8237-88b0b5507738" class=""><mark class="highlight-red"><strong>Retention</strong></mark> ລູກຄ້າເກີດມີການຊື້ຊ້ຳ ເວົ້າເຖິງເລື່ອງ Royalty  </p><p id="655ab287-265a-4f2d-b220-b74df327a153" class="">
+</p><ul id="90ced392-bff6-45f1-992d-f5406c89ba22" class="bulleted-list"><li style="list-style-type:disc">The <mark class="highlight-blue_background"><a href="https://missinglinksocialmedia.com.au/facebook-cold-audience/">Cold Audience</a></mark> — those who haven’t seen or engaged with your content.</li></ul><ul id="6e4c8521-1121-4995-a9a9-9b127a1a50f1" class="bulleted-list"><li style="list-style-type:disc">The<mark class="highlight-orange_background"> </mark><mark class="highlight-orange_background"><a href="https://missinglinksocialmedia.com.au/facebook-warm-audience/">Warm Audience</a></mark> — those who have engaged with your content, visited your page, or watched more than three seconds of your video.</li></ul><ul id="f5568a26-70b9-4f71-b402-6da54d361dbd" class="bulleted-list"><li style="list-style-type:disc">The <mark class="highlight-red_background"><a href="https://missinglinksocialmedia.com.au/facebook-hot-audience/">Hot Audience</a></mark> — a Custom Audience of people who have visited your website or supplied their contact details.</li></ul><p id="5e72d65b-8158-4db9-aa8d-d629a75c3dbe" class="">
+</p></div></div><figure id="50b8c76a-3a6a-48e8-88e7-0c792d942758" class="image"><a href="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-18_220503.png"><img style="width:1294px" src="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-18_220503.png"/></a></figure><h1 id="cb2f69b3-952f-4a1f-bb65-02915052b3c2" class="">Data Science Ecosystem</h1><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="0f15e3a0-2001-493b-b273-d320615f0310"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><mark class="highlight-red"><strong><strong><strong><strong>Core Skills</strong></strong></strong></strong></mark><strong><strong><strong><strong>
+Data Science </strong></strong></strong></strong>ຄວາມຮູ້ໃນການປັ່ນ Data <strong><strong><strong><strong>
+Data Engineering </strong></strong></strong></strong>ວາງໂຄງສ້າງ Data</div></figure><div id="c0feee29-fe21-42f6-91fc-0918e017a9df" class="column-list"><div id="40c75484-7699-47b3-93dd-d18aa76d3499" style="width:50%" class="column"><figure id="dca4e335-0e26-4e44-be05-59f5b9bcffd6" class="image"><a href="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-18_221710.png"><img style="width:1137px" src="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-18_221710.png"/></a></figure><figure id="dc9ecd0b-38cb-475b-a17e-f5daa5ef30a1"><a href="https://learn.microsoft.com/en-us/azure/architecture/solution-ideas/articles/enterprise-data-warehouse" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Enterprise data warehouse - Azure Solution Ideas</div><div class="bookmark-description">Bring all of your data together, via Azure Data Lake (ADLS) Gen-2,  with an Azure Synapse data warehouse that scales easily. Orchestrate and ingest data via Azure Data Factory (ADF) pipelines, optionally enhanced with Azure Databricks, for advanced scalable curation. Build operational reports and analytical dashboards to derive insights from the data.</div></div><div class="bookmark-href"><img src="https://learn.microsoft.com/favicon.ico" class="icon bookmark-icon"/>https://learn.microsoft.com/en-us/azure/architecture/solution-ideas/articles/enterprise-data-warehouse</div></div></a></figure></div><div id="3b38117d-9907-4feb-a36b-c10c0b053cb3" style="width:50%" class="column"><p id="26e308ee-b7a6-4ba5-b4b5-2261625aeeeb" class="">ການຍ້າຍ Data ຈາກ Source ເຂົ້າມາໃສ່ໃນ Storage ເອີ້ນວ່າ Data pipeline</p><blockquote id="5450b036-f1c6-44a0-ba6f-fce301580bb2" class=""><mark class="highlight-red"><strong>Data Pipeline (ETL)</strong></mark>
+Moving data from <strong>one place</strong> (the source) to a <strong>destination</strong>
+(e.g. data warehouse)</blockquote><p id="b80236f1-3861-40f9-a10d-4a762c6c3b43" class="">
+</p><figure id="80012b87-d94e-44ea-826e-6d9ae1f1b0dc" class="image"><a href="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-18_222128.png"><img style="width:864px" src="Intro%20to%20Data%20science%20006bd3a510a945fdb2fdecf0c7392fb3/Screenshot_2023-05-18_222128.png"/></a></figure></div></div><p id="32772956-532d-408b-83ab-6364b9cc8e03" class=""><a href="https://trends.google.com/trends/explore?date=2008-01-01%202008-12-31&amp;geo=US&amp;q=%22Obama%20Mccain%20Debate%22,%22Mccain%20Obama%20Debate%22">&quot;Obama Mccain Debate&quot;, &quot;Mccain Obama Debate&quot; - Explore - Google Trends</a></p><p id="5c96064b-540d-4481-a5e7-3706fb998cea" class=""><a href="https://trends.google.com/trends/explore?date=2016-09-15%202016-10-30&amp;geo=US&amp;q=%22Trump%20Clinton%20Debate%22,%22Clinton%20Trump%20Debate%22">&quot;Trump Clinton Debate&quot;, &quot;Clinton Trump Debate&quot; - Explore - Google Trends</a></p><p id="e82e3325-59d9-4b26-abc4-d8135204dc69" class="">
+</p><div id="320c4401-81a1-4cc6-ab92-a1838047ca8b" class="column-list"><div id="03e06209-13b6-4af1-8bf0-d01cca5b04d0" style="width:50%" class="column"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="55cb447f-3dcd-4673-83bd-faf01ca1d797"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>Learn One Step at a Time.</strong></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="a47c6285-fd4e-4b76-b7bd-689aa12fec19"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong><strong><strong><strong><strong><strong><strong><strong>One needs to learn a lot.</strong></strong></strong></strong></strong></strong></strong></strong></div></figure></div><div id="8672e328-ee2f-4756-a53b-34720a6f9917" style="width:50%" class="column"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="03a863c8-617d-4ff5-8331-1beab7fec4cb"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>Moneyball</strong>
+The key to success is getting the right data and finding the right attributes.</div></figure></div></div><h3 id="ccb11a6b-1dd8-41f8-aed5-a1beca8af08b" class="">DIKW model</h3><ul id="c8896777-52ac-4bb3-a631-2051d21943bb" class="bulleted-list"><li style="list-style-type:disc">DATA: Raw Data</li></ul><ul id="061138db-6316-4b60-92c3-c8cd089c5d10" class="bulleted-list"><li style="list-style-type:disc">Information</li></ul><ul id="487bd96e-d9f9-4e04-a6ad-315a747ccf48" class="bulleted-list"><li style="list-style-type:disc">Knowledge</li></ul><ul id="4c7cb553-bca8-45b2-90f2-7a2d6e388eff" class="bulleted-list"><li style="list-style-type:disc">Wisdom</li></ul></div></article></body></html>
